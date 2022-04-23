@@ -35,9 +35,10 @@ def alg_met(L,T,K, file_name):
                 x = random.random()
                 if x<math.exp(-dE/(kb*T)):
                     S[i][j] = -s
-        np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+file_name+str(name_count)+'.txt',S)
-        with open(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+file_name+'m.txt','a',encoding = 'utf-8') as file:
+        np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\L10_T2\\'+file_name+str(name_count)+'.txt',S)
+        with open(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\L10_T2\\'+file_name+'m.txt','a',encoding = 'utf-8') as file:
             file.write(str(1/N*sum(sum(S)))+'\n')
 
 if __name__ == "__main__":
-    alg_met(10,1,10**6,"L10_T1_")
+    #alg_met(10,1,10**6,"L10_T1_")
+    alg_met(10,2.26,10**6,"L10_T2_")
