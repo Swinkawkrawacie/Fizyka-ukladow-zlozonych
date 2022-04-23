@@ -7,7 +7,8 @@ import random
 def alg_met(L,T,K, file_name):
     kb = 1 #stała boltzmana
     J = 1
-    S = np.ones((L,L))
+    #S = np.ones((L,L))
+    S = np.random.choice([-1,1],(L,L))
     N=L**2
     name_count=0
     for z in range(K):
@@ -35,11 +36,13 @@ def alg_met(L,T,K, file_name):
                 x = random.random()
                 if x<math.exp(-dE/(kb*T)):
                     S[i][j] = -s
-        np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\L10_T3\\'+file_name+str(name_count)+'.txt',S)
+        #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\L10_T1_2\\'+file_name+str(name_count)+'.txt',S)
         with open(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+file_name+'m.txt','a',encoding = 'utf-8') as file:
             file.write(str(1/N*sum(sum(S)))+'\n')
 
 if __name__ == "__main__":
     #alg_met(10,1,10**6,"L10_T1_")
     #alg_met(10,2.26,10**6,"L10_T2_")
-    alg_met(10,4,10**6,"L10_T3_")
+    #alg_met(10,4,10**6,"L10_T3_")
+    alg_met(10,1.7,10**6,"1_7_10")
+    # alg_met(10,1,10**6,"L10_T1_2_")
