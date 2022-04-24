@@ -12,10 +12,10 @@ def alg_met(L,T,K):
     b[L+1] = 0
     N=L**2
     S = np.ones((L,L))
-    #for i in range(L):
-    #    for j in range(L):
-    #        if random.random()<0.5:
-    #            S[i][j] = -1
+    for i in range(L):
+        for j in range(L):
+            if random.random()<0.5:
+                S[i][j] = -1
     #S_data = [np.copy(S)]
     m_data = [S.mean()]
     K_count = 0
@@ -78,16 +78,16 @@ if __name__ == "__main__":
     #s2_3 = alg_met(100,4,10**4)
     #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T3_uno",s2_3, allow_pickle=True)
     #----------------------------------------m dla T=1.7-------------------------------------------------------------------------
-    #m10 = alg_met(10,1.7,10**6)
-    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m10.txt',m10)
-    #m50 = alg_met(50,1.7,10**6)
-    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m50.txt',m50)
-    #m100 = alg_met(100,1.7,10**6)
-    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m100.txt',m100)
-    m=[]
-    t_range = np.arange(1,2,0.2)
-    t_range = np.append(t_range,np.arange(2,2.6,0.1))
-    t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
-    for i in t_range:
-        m.append(alg_met(100,i,10**6))
-    np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m100_zakres",m, allow_pickle=True)
+    #m10_uno = alg_met(10,1.7,10**6)
+    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m10_uno.txt',m10_uno)
+    #m50_uno = alg_met(50,1.7,10**6)
+    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m50_uno.txt',m50_uno)
+    m100_uno = alg_met(100,1.7,10**6)
+    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m100_uno.txt',m100_uno)
+    #m=[]
+    #t_range = np.arange(1,2,0.2)
+    #t_range = np.append(t_range,np.arange(2,2.6,0.1))
+    #t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
+    #for i in t_range:
+    #    m.append(alg_met(100,i,10**6))
+    #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m100_zakres",m, allow_pickle=True)
