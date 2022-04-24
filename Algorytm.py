@@ -12,13 +12,12 @@ def alg_met(L,T,K):
     b[L+1] = 0
     N=L**2
     S = np.ones((L,L))
-    for i in range(L):
-        for j in range(L):
-            if random.random()<0.5:
-                S[i][j] = -1
-    #S = np.random.choice([-1,1],(L,L))
-    S_data = [np.copy(S)]
-    #m_data = [S.mean()]
+    #for i in range(L):
+    #    for j in range(L):
+    #        if random.random()<0.5:
+    #            S[i][j] = -1
+    #S_data = [np.copy(S)]
+    m_data = [S.mean()]
     K_count = 0
     while K_count<K:
         K_count += 1
@@ -34,10 +33,10 @@ def alg_met(L,T,K):
                 x = random.random()
                 if x<np.exp(-dE/T):
                     S[i][j] *= -1
-        #m_data.append(S.mean())
-        S_data.append(np.copy(S))
-    return S_data
-    #return m_data
+        m_data.append(S.mean())
+        #S_data.append(np.copy(S))
+    #return S_data
+    return m_data
 
 def gen_txt(T,n,m=True,L=10):
     if m==False:
@@ -74,10 +73,10 @@ if __name__ == "__main__":
     #------------------------------------L=100, uporządkowane---------------------------------------------------------------------
     #s2_1 = alg_met(100,1,10**4)
     #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T1_uno",s2_1, allow_pickle=True)
-    s2_2 = alg_met(100,2.26,10**4)
-    np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T2_uno",s2_2, allow_pickle=True)
-    s2_3 = alg_met(100,4,10**5)
-    np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T3_uno",s2_3, allow_pickle=True)
+    #s2_2 = alg_met(100,2.26,10**4)
+    #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T2_uno",s2_2, allow_pickle=True)
+    #s2_3 = alg_met(100,4,10**4)
+    #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L100_T3_uno",s2_3, allow_pickle=True)
     #----------------------------------------m dla T=1.7-------------------------------------------------------------------------
     #m10 = alg_met(10,1.7,10**6)
     #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m10.txt',m10)
@@ -85,10 +84,10 @@ if __name__ == "__main__":
     #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m50.txt',m50)
     #m100 = alg_met(100,1.7,10**6)
     #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m100.txt',m100)
-    #m=[]
-    #t_range = np.arange(1,2,0.2)
-    #t_range = np.append(t_range,np.arange(2,2.6,0.1))
-    #t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
-    #for i in t_range:
-    #    m.append(alg_met(50,i,10**6))
-    #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m50_zakres",m, allow_pickle=True)
+    m=[]
+    t_range = np.arange(1,2,0.2)
+    t_range = np.append(t_range,np.arange(2,2.6,0.1))
+    t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
+    for i in t_range:
+        m.append(alg_met(100,i,10**6))
+    np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m100_zakres",m, allow_pickle=True)
