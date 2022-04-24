@@ -64,8 +64,9 @@ def gen_txt(T,n,m=True,L=10):
     
 if __name__ == "__main__":
     #------------------------------------L=10, uporządkowane---------------------------------------------------------------------
-    #s1_1 = alg_met(10,1,10**6)
-    #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L10_T1_uno",s1_1, allow_pickle=True)
+    for i in range(1,5):
+        s1_1 = alg_met(100,1.7,10**6)
+        np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m100_uno"+str(i)+'.txt',s1_1)
     #s1_2 = alg_met(10,2.26,10**6)
     #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L10_T2_uno",s1_2, allow_pickle=True)
     #s1_3 = alg_met(10,4,10**6)
@@ -82,8 +83,8 @@ if __name__ == "__main__":
     #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m10_uno.txt',m10_uno)
     #m50_uno = alg_met(50,1.7,10**6)
     #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m50_uno.txt',m50_uno)
-    m100_uno = alg_met(100,1.7,10**6)
-    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m100_uno.txt',m100_uno)
+    #m100_uno = alg_met(100,1.7,10**6)
+    #np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\m100_uno.txt',m100_uno)
     #m=[]
     #t_range = np.arange(1,2,0.2)
     #t_range = np.append(t_range,np.arange(2,2.6,0.1))
