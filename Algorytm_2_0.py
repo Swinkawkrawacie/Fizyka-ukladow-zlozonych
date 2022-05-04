@@ -77,7 +77,7 @@ def gen_txt(T,K,L=10,M=True, matr=True, k0=0,r=False, name=''):
                     new_m, new_s = alg_met(L,T,K,ran=r)
                     for i in [0,1000,4000,7000,10000]:
                         np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\L'+str(L)+'_T'+str(T)+'_'+str(i)+name+'.txt',new_s[i])
-                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane1\\m'+str(L)+'_T'+str(T)+name+'.txt',new_m)
+                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+'_T'+str(T)+name+'.txt',new_m)
             else:
                 new_m = alg_met(L,T,K,matr=False,ran=r)
                 np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+'_T'+str(T)+name+'.txt',new_m)
@@ -96,5 +96,8 @@ if __name__ == "__main__":
     #gen_txt(1.7,10**6)
     #for i in range(1,10):
     #    gen_txt(1.7,10**6,matr=False, name=str(i))
-    for i in range(1,10):
-        gen_txt(1.7,10**6,50,matr=False, name=str(i))
+    #for i in range(1,10):
+    #    gen_txt(1.7,10**6,50,matr=False, name=str(i))
+    #for i in range(1,6):
+    #    gen_txt(1.7,10**6,100,matr=False, name=str(i))
+    pass
