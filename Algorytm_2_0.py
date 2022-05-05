@@ -55,7 +55,19 @@ def alg_met(L,T,K,M=True, matr = True, ran = False):
     return
 
 
-def gen_txt(T,K,L=10,M=True, matr=True, k0=0,r=False, name=''):
+def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str=''):
+    """
+    Generate text file of spin configuration and/or trajectory
+    @param T: temperature or a list of temperatures
+    @param K: (int) amount of MCS
+    @param L: (int) size of a matrix (default=10)
+    @param M: (bool) equals True if the trajectory should be saved to a file (default=True)
+    @param matr: (bool) equals True if the matrixes should be saved to a file (default=True)
+    @param k0: (int) index to start calculating average with
+    @param r: (bool) equals True if the base matrix should be unordered (default=False)
+    @param name: (str) addition to the basic name (default='')
+
+    """
     if M==False:
         if matr:
             if L==10:
@@ -93,11 +105,11 @@ def gen_txt(T,K,L=10,M=True, matr=True, k0=0,r=False, name=''):
     
 if __name__ == "__main__":
     #gen_txt(2.26,10**6)
-    #gen_txt(1.7,10**6)
+    #gen_txt(1.7,10**6,100, name=6)
     #for i in range(1,10):
     #    gen_txt(1.7,10**6,matr=False, name=str(i))
     #for i in range(1,10):
     #    gen_txt(1.7,10**6,50,matr=False, name=str(i))
     #for i in range(1,6):
     #    gen_txt(1.7,10**6,100,matr=False, name=str(i))
-    pass
+    gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
