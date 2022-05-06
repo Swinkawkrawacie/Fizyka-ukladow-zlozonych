@@ -58,6 +58,7 @@ def alg_met(L,T,K,M=True, matr = True, ran = False):
 def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av=True):
     """
     Generate text file of spin configuration and/or trajectory
+
     @param T: temperature or a list of temperatures
     @param K: (int) amount of MCS
     @param L: (int) size of a matrix (default=10)
@@ -66,6 +67,7 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
     @param k0: (int) index to start calculating average with
     @param r: (bool) equals True if the base matrix should be unordered (default=False)
     @param name: (str) addition to the basic name (default='')
+    @param av: (bool) equals True if only the average is supposed to be calculated - without susceptibility (default=True)
     """
     if M==False:
         if matr:
@@ -108,6 +110,7 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
                 pod = []
                 for i in range(len(m_2)):
                     pod.append((m_2[i]-(average_m[i])**2)*L**2/T[i])
+                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
                 np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'pod.txt',pod)
 
     
@@ -123,5 +126,9 @@ if __name__ == "__main__":
     #gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
     #for i in range(101):
      #   gen_txt(2.26,10**5,L=100,matr=False, r=True, name='prob'+str(i))
-    for i in range(4):
-        gen_txt(1.7,10**5,matr=False,name=str(i+6), r=True)
+    #for i in range(4):
+     #   gen_txt(1.7,10**5,matr=False,name=str(i+6), r=True)
+    t_range = np.arange(1,2,0.2)
+    t_range = np.append(t_range,np.arange(2,2.6,0.05))
+    t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
+    gen_txt(t_range,5*10**5,L=100,matr=False,k0=10**4, name='av',av=False,)
