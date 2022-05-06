@@ -55,7 +55,7 @@ def alg_met(L,T,K,M=True, matr = True, ran = False):
     return
 
 
-def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str=''):
+def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av=True):
     """
     Generate text file of spin configuration and/or trajectory
     @param T: temperature or a list of temperatures
@@ -66,7 +66,6 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
     @param k0: (int) index to start calculating average with
     @param r: (bool) equals True if the base matrix should be unordered (default=False)
     @param name: (str) addition to the basic name (default='')
-
     """
     if M==False:
         if matr:
@@ -100,7 +99,16 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
             average_m=[]
             for i in new_m:
                 average_m.append(sum(abs(k) for k in i[k0:])/len(i[k0:]))
-            np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
+            if av:
+                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
+            else:
+                m_2=[]
+                for i in new_m:
+                    m_2.append(sum(k**2 for k in i[k0:])/len(i[k0:]))
+                pod = []
+                for i in range(len(m_2)):
+                    pod.append((m_2[i]-(average_m[i])**2)*L**2/T[i])
+                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'pod.txt',pod)
 
     
 if __name__ == "__main__":
@@ -112,4 +120,8 @@ if __name__ == "__main__":
     #    gen_txt(1.7,10**6,50,matr=False, name=str(i))
     #for i in range(1,6):
     #    gen_txt(1.7,10**6,100,matr=False, name=str(i))
-    gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
+    #gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
+    #for i in range(101):
+     #   gen_txt(2.26,10**5,L=100,matr=False, r=True, name='prob'+str(i))
+    for i in range(4):
+        gen_txt(1.7,10**5,matr=False,name=str(i+6), r=True)
