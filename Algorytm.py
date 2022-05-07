@@ -12,10 +12,10 @@ def alg_met(L,T,K):
     b[L+1] = 0
     N=L**2
     S = np.ones((L,L))
-    for i in range(L):
-        for j in range(L):
-            if random.random()<0.5:
-                S[i][j] = -1
+    #for i in range(L):
+    #    for j in range(L):
+    #        if random.random()<0.5:
+    #            S[i][j] = -1
     #S_data = [np.copy(S)]
     m_data = [S.mean()]
     K_count = 0
@@ -64,9 +64,9 @@ def gen_txt(T,n,m=True,L=10):
     
 if __name__ == "__main__":
     #------------------------------------L=10, uporządkowane---------------------------------------------------------------------
-    for i in range(1,5):
-        s1_1 = alg_met(100,1.7,10**6)
-        np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\danem\\'+"m100_uno"+str(i)+'.txt',s1_1)
+    #for i in range(1,):
+    m = alg_met(100,1.7,10**6)
+    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(100)+'_T'+str(1.7)+str(6)+'.txt',m)
     #s1_2 = alg_met(10,2.26,10**6)
     #np.save(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\'+"L10_T2_uno",s1_2, allow_pickle=True)
     #s1_3 = alg_met(10,4,10**6)
