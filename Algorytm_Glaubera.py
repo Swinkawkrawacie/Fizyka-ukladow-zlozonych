@@ -4,8 +4,6 @@ import numpy as np
 from numba import njit
 import random
 
-#GLAUBERA
-
 @njit
 def is_mcs(S,T,L,N,b):
     op_count=0
@@ -21,7 +19,7 @@ def is_mcs(S,T,L,N,b):
 
 
 
-def alg_met(L,T,K,M=True, matr = True, ran = False):
+def alg_met(L:int,T,K:int,M:bool=True, matr:bool=True, ran:bool=False):
     b = np.arange(-1,L+1)
     b[0] = L-1
     b[L+1] = 0
@@ -54,7 +52,7 @@ def alg_met(L,T,K,M=True, matr = True, ran = False):
     return
 
 
-def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av=True):
+def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av:bool=True, time:bool=True):
     """
     Generate text file of spin configuration and/or trajectory
 
@@ -67,6 +65,7 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
     @param r: (bool) equals True if the base matrix should be unordered (default=False)
     @param name: (str) addition to the basic name (default='')
     @param av: (bool) equals True if only the average is supposed to be calculated - without susceptibility (default=True)
+    @param time: (bool) equals False if only the average is supposed to be calculated from more trajectories and at specific K (default=True)
     """
     if M==False:
         if matr:
@@ -94,23 +93,32 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
                 new_m = alg_met(L,T,K,matr=False,ran=r)
                 np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+'_T'+str(T)+name+'.txt',new_m)
         else:
-            new_m = []
-            for i in T:
-                new_m.append(alg_met(L,i,K, matr=False,ran=r))
-            average_m=[]
-            for i in new_m:
-                average_m.append(sum(abs(k) for k in i[k0:])/len(i[k0:]))
-            if av:
-                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
-            else:
-                m_2=[]
+            if time:
+                new_m = []
+                for i in T:
+                    new_m.append(alg_met(L,i,K, matr=False,ran=r))
+                average_m=[]
                 for i in new_m:
-                    m_2.append(sum(k**2 for k in i[k0:])/len(i[k0:]))
-                pod = []
-                for i in range(len(m_2)):
-                    pod.append((m_2[i]-(average_m[i])**2)*L**2/T[i])
-                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
-                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'pod.txt',pod)
+                    average_m.append(sum(abs(k) for k in i[k0:])/len(i[k0:]))
+                if av:
+                    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
+                else:
+                    m_2=[]
+                    for i in new_m:
+                        m_2.append(sum(k**2 for k in i[k0:])/len(i[k0:]))
+                    pod = []
+                    for i in range(len(m_2)):
+                        pod.append((m_2[i]-(average_m[i])**2)*L**2/T[i])
+                    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'.txt',average_m)
+                    np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+name+'pod.txt',pod)
+            else:
+                new_m = []
+                for i in T:
+                    tab = []
+                    for j in range(200):
+                        tab.append(abs(alg_met(L,i,K, matr=False,ran=r)[K]))
+                    new_m.append(sum(tab)/200)
+                np.savetxt(r'C:\\Users\\mazur\\OneDrive\\Dokumenty\\GitHub\\Fizyka-ukladow-zlozonych\\dane\\m'+str(L)+'zesp'+name+'.txt',new_m)
 
     
 if __name__ == "__main__":

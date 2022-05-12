@@ -22,7 +22,7 @@ def is_mcs(S,T,L,N,b):
 
 
 
-def alg_met(L,T,K,M=True, matr = True, ran = False):
+def alg_met(L:int,T,K:int,M:bool=True, matr:bool=True, ran:bool=False):
     b = np.arange(-1,L+1)
     b[0] = L-1
     b[L+1] = 0
@@ -55,7 +55,7 @@ def alg_met(L,T,K,M=True, matr = True, ran = False):
     return
 
 
-def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av=True, time=True):
+def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False, name:str='',av:bool=True, time:bool=True):
     """
     Generate text file of spin configuration and/or trajectory
 
@@ -68,7 +68,7 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
     @param r: (bool) equals True if the base matrix should be unordered (default=False)
     @param name: (str) addition to the basic name (default='')
     @param av: (bool) equals True if only the average is supposed to be calculated - without susceptibility (default=True)
-    @param av: (bool) equals False if only the average is supposed to be calculated from more trajectories and at specific K (default=True)
+    @param time: (bool) equals False if only the average is supposed to be calculated from more trajectories and at specific K (default=True)
     """
     if M==False:
         if matr:
@@ -125,20 +125,4 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
 
     
 if __name__ == "__main__":
-    #gen_txt(2.26,10**6)
-    #gen_txt(1.7,10**6,100, name=6)
-    #for i in range(1,10):
-    #    gen_txt(1.7,10**6,matr=False, name=str(i))
-    #for i in range(1,10):
-    #    gen_txt(1.7,10**6,50,matr=False, name=str(i))
-    #for i in range(1,6):
-    #    gen_txt(1.7,10**6,100,matr=False, name=str(i))
-    #gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
-    #for i in range(101):
-     #   gen_txt(2.26,10**5,L=100,matr=False, r=True, name='prob'+str(i))
-    #for i in range(4):
-     #   gen_txt(1.7,10**5,matr=False,name=str(i+6), r=True)
-    t_range = np.arange(1,2,0.3)
-    t_range = np.append(t_range,np.arange(2,2.6,0.1)[:-1])
-    t_range = np.append(t_range,np.arange(2.6,3.6,0.3))
-    gen_txt(t_range,10**4,L=100,matr=False,time=False)
+    gen_txt(2.26, 10**5)
