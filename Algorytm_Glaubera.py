@@ -122,20 +122,4 @@ def gen_txt(T,K:int,L:int=10,M:bool=True, matr:bool=True, k0:int=0,r:bool=False,
 
     
 if __name__ == "__main__":
-    #gen_txt(2.26,10**6)
-    #gen_txt(1.7,10**6,100, name=6)
-    #for i in range(1,10):
-    #    gen_txt(1.7,10**6,matr=False, name=str(i))
-    #for i in range(1,10):
-    #    gen_txt(1.7,10**6,50,matr=False, name=str(i))
-    #for i in range(1,6):
-    #    gen_txt(1.7,10**6,100,matr=False, name=str(i))
-    #gen_txt(1.7,10**6,100,matr=False,r=True,name='6')
-    #for i in range(101):
-     #   gen_txt(2.26,10**5,L=100,matr=False, r=True, name='prob'+str(i))
-    #for i in range(4):
-     #   gen_txt(1.7,10**5,matr=False,name=str(i+6), r=True)
-    t_range = np.arange(1,2,0.2)
-    t_range = np.append(t_range,np.arange(2,2.6,0.05))
-    t_range = np.append(t_range,np.arange(2.6,3.5,0.2))
-    gen_txt(t_range,5*10**5,L=100,matr=False,k0=10**4, name='av_g_',av=False,)
+    gen_txt(2.26,10**5)
