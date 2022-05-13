@@ -63,7 +63,7 @@ def gen_mw(N, L, delta_x):
         time /= L
         prob /= L
         results.append([x, prob, time])
-        x += delta_x 
+        x = round(x+delta_x,2) 
     return results
 
 def gen_txt(N, L, delta_x):
