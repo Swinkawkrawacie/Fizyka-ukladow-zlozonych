@@ -44,7 +44,8 @@ function gen_mw(::Val{N}, L, dx) where N
 end
 
 function gen_txt(::Val{N}, L, delta_x) where N
-    new_delta = [collect(((i-1)*10+1)*delta_x:delta_x:(i)*10*delta_x) for i in 1:5]
+    new_delta = [collect(((i-1)*19+1)*delta_x:delta_x:(i)*19*delta_x) for i in 1:2]
+    push!(new_delta, collect(39*delta_x:delta_x:1))
     results = Matrix{Float64}[]
     Threads.@threads for i = new_delta
         for j in i
